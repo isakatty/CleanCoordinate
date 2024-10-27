@@ -21,7 +21,7 @@ final class SearchViewController: BaseNavigationViewController {
     private lazy var movieCV: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         return view
     }()
     

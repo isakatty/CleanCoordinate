@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct SearchResponseDTO: Decodable {
+protocol SearchResponseProtocol {
+    var page: Int { get }
+    var results: [SearchResultDTO]  { get }
+    var totalPages: Int { get }
+    var totalResults: Int  { get }
+}
+
+struct SearchResponseDTO: Decodable, SearchResponseProtocol {
     let page: Int
     let results: [SearchResultDTO]
     let totalPages, totalResults: Int

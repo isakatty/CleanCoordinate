@@ -8,7 +8,7 @@
 import Foundation
 
 struct MapperService: MapperServiceProtocol {
-    func mapSearchResponse(from dto: SearchResponseDTO) -> SearchResponse {
+    func mapSearchResponse(from dto: SearchResponseProtocol) -> SearchResponse {
         return SearchResponse(
             page: dto.page,
             results: dto.results.compactMap({ dto in

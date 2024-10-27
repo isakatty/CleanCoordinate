@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MapperServiceProtocol {
-    func mapSearchResponse(from dto: SearchResponseDTO) -> SearchResponse
+    func mapSearchResponse(from dto: SearchResponseProtocol) -> SearchResponse
 }
