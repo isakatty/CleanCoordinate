@@ -14,8 +14,7 @@ final class DIContainer {
     
     func createSearchViewModel() -> SearchViewModel {
         let repository = SearchRepository(network: NetworkManager())
-        let mapper = MapperService()
-        let useCase = SearchUseCase(repository: repository, mapper: mapper)
+        let useCase = SearchUseCase(repository: repository)
         return SearchViewModel(searchUseCase: useCase)
     }
 }

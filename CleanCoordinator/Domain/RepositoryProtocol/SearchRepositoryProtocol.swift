@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol SearchRepositoryProtocol {
-    func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponseDTO, NetworkError>>
+    func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponse, NetworkError>>
 }

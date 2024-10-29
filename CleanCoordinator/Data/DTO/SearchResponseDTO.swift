@@ -7,14 +7,7 @@
 
 import Foundation
 
-protocol SearchResponseProtocol {
-    var page: Int { get }
-    var results: [SearchResultDTO]  { get }
-    var totalPages: Int { get }
-    var totalResults: Int  { get }
-}
-
-struct SearchResponseDTO: Decodable, SearchResponseProtocol {
+struct SearchResponseDTO: Decodable {
     let page: Int
     let results: [SearchResultDTO]
     let totalPages, totalResults: Int
@@ -26,6 +19,19 @@ struct SearchResponseDTO: Decodable, SearchResponseProtocol {
     }
 }
 
+extension SearchResponseDTO {
+    func toDomain() -> SearchResponse {
+        return .init(
+            page: page,
+            results: results.compactMap {
+                return .init(id: $0.id, posterPath: $0.posterPath ?? "")
+            },
+            totalPages: totalPages,
+            totalResults: totalResults
+        )
+    }
+}
+
 struct SearchResultDTO: Decodable {
     let id: Int
     let posterPath: String?
@@ -33,5 +39,11 @@ struct SearchResultDTO: Decodable {
     enum CodingKeys: String, CodingKey {
         case id
         case posterPath = "poster_path"
+    }
+}
+
+extension SearchResultDTO {
+    func toDomain() -> SearchResult {
+        return .init(id: id, posterPath: posterPath ?? "")
     }
 }
