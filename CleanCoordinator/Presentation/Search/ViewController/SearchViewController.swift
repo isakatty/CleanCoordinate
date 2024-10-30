@@ -25,10 +25,16 @@ final class SearchViewController: BaseNavigationViewController {
         return view
     }()
     
+    private lazy var btn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("하이루", for: .normal)
+        return btn
+    }()
+    
     private let searchVM: SearchViewModel
     
-    init() {
-        self.searchVM = DIContainer.shared.createSearchViewModel()
+    init(searchVM: SearchViewModel) {
+        self.searchVM = searchVM
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,9 +44,12 @@ final class SearchViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-        let input = SearchViewModel.Input(searchEnterTapped:
-            searchController.searchBar.rx.searchButtonClicked
-                .withLatestFrom(searchController.searchBar.rx.text.orEmpty)
+        
+        let input = SearchViewModel.Input(
+            searchEnterTapped:
+                searchController.searchBar.rx.searchButtonClicked
+                .withLatestFrom(searchController.searchBar.rx.text.orEmpty),
+            btnTap: btn.rx.tap.map { () }
         )
         
         let output = searchVM.transform(input: input)
@@ -67,11 +76,18 @@ final class SearchViewController: BaseNavigationViewController {
     
     override func setHierarchy() {
         view.addSubview(movieCV)
+        [movieCV, btn]
+            .forEach { view.addSubview($0) }
     }
     
     override func setConstraints() {
+        btn.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(40)
+        }
         movieCV.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(btn)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }

@@ -18,8 +18,7 @@ final class SearchRepository: SearchRepositoryProtocol {
     
     func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponse, NetworkError>> {
         return network.callRequest(router: .searchMovie(target: txt, page: page), type: SearchResponseDTO.self)
-            .flatMap { [weak self] result in
-                guard let self else { return .error(NetworkError.invalidResponse)}
+            .flatMap { result in
                 switch result {
                 case .success(let responseDTO):
                     return .just(Result.success(responseDTO.toDomain()))
