@@ -19,7 +19,7 @@ final class SearchCoordinator: Coordinator {
     }
     
     deinit {
-        print("Deinit 됨요")
+        print("== SearchCoordinator Deinit ==")
     }
     
     func start() {
@@ -33,14 +33,16 @@ final class SearchCoordinator: Coordinator {
     }
     
     func toAfterSearch() {
-        let afterCoordinator = AfterSearchCoordinator(navigationController: navigationController)
+        let afterCoordinator = AfterSearchCoordinator(
+            parent: self,
+            navigationController: navigationController
+        )
         childCoordinators.append(afterCoordinator)
+        print("Child coordinators: \(childCoordinators)")
         afterCoordinator.start()
     }
     
-//    func finish() {
-//        <#code#>
-//    }
-    
-    
+    func finish() {
+        parent?.childDidFinish(self)
+    }
 }

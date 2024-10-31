@@ -13,14 +13,16 @@ protocol Coordinator: AnyObject {
     var navigationController: UINavigationController { get }
     
     func start()
-//    func finish()
+    func finish()
 }
 
 extension Coordinator {
     func childDidFinish(_ coordinator : Coordinator){
         for (index, child) in childCoordinators.enumerated() {
+            print(index, "이거 왜 안돌아요")
             if child === coordinator {
                 childCoordinators.remove(at: index)
+                print(childCoordinators)
                 break
             }
         }

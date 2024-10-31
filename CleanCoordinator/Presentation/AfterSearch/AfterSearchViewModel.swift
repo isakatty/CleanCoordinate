@@ -18,6 +18,11 @@ final class AfterSearchViewModel: ViewModelProtocol {
         self.afterCoordinator = afterCoordinator
     }
     
+    deinit {
+        afterCoordinator.finish()
+        print("AfterSearcViewModel deinit")
+    }
+    
     struct Input {
         let viewWillAppear: Observable<Void>
     }

@@ -15,8 +15,6 @@ final class AppCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        
-        start()
     }
     
     deinit {
@@ -25,10 +23,12 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let searchCoordinator = SearchCoordinator(navigationController: navigationController)
+        childCoordinators.append(searchCoordinator)
+        print("-Child coordinators: \(childCoordinators)")
         searchCoordinator.start()
     }
     
     func finish() {
-        
+        childCoordinators.removeLast()
     }
 }

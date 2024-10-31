@@ -25,7 +25,7 @@ final class SearchViewController: BaseNavigationViewController {
         return view
     }()
     
-    private lazy var btn: UIButton = {
+    private let btn: UIButton = {
         let btn = UIButton()
         btn.setTitle("하이루", for: .normal)
         return btn

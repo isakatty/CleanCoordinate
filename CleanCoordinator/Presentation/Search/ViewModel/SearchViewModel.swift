@@ -14,12 +14,12 @@ final class SearchViewModel: ViewModelProtocol {
     var disposeBag: DisposeBag = DisposeBag()
     
     private let searchUseCase: SearchUseCaseProtocl
-    private var coordinator: SearchCoordinator
+    weak var coordinator: SearchCoordinator?
     
     init(
         searchUseCase: SearchUseCaseProtocl,
         coordinator: SearchCoordinator
-    ) {
+    ) {  
         self.searchUseCase = searchUseCase
         self.coordinator = coordinator
     }
@@ -57,7 +57,7 @@ final class SearchViewModel: ViewModelProtocol {
         
         input.btnTap
             .bind(with: self) { owner, _ in
-                owner.coordinator.toAfterSearch()
+                owner.coordinator?.toAfterSearch()
             }
             .disposed(by: disposeBag)
         

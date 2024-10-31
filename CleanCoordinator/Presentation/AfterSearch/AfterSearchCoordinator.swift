@@ -13,14 +13,23 @@ final class AfterSearchCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     init(
+        parent: Coordinator,
         navigationController: UINavigationController
     ) {
+        self.parent = parent
         self.navigationController = navigationController
+    }
+    
+    deinit {
+        print("==AfterSearchCoordinator deinit ==")
     }
     
     func start() {
         let vc = AfterSearchViewController(afterVM: AfterSearchViewModel(afterCoordinator: self))
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func finish() {
+        parent?.childDidFinish(self)
+    }
 }
-
