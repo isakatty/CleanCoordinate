@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: protocol로 분리할게 없는 상황.
 protocol AfterSearchCoordinator: Coordinator {
     
 }

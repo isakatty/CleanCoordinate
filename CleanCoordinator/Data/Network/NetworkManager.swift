@@ -25,7 +25,7 @@ enum NetworkError: Error {
     case unkwonedError
 }
 
-class NetworkManager: NetworkType {
+final class NetworkManager: NetworkType {
     func callRequest<T: Decodable>(
         router: Router,
         type: T.Type

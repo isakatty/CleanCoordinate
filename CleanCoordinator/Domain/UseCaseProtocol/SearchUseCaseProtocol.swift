@@ -9,6 +9,6 @@ import Foundation
 
 import RxSwift
 
-protocol SearchUseCaseProtocl {
+protocol SearchUseCaseProtocol {
     func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponse, NetworkError>>
 }

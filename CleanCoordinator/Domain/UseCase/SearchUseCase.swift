@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-final class SearchUseCase: SearchUseCaseProtocl {
+final class SearchUseCase: SearchUseCaseProtocol {
     private let repository: SearchRepositoryProtocol
     
     init(repository: SearchRepositoryProtocol) {

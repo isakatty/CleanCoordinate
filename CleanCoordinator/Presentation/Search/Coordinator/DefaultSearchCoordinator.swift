@@ -25,7 +25,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     func start() {
         let vc = SearchViewController(
             searchVM: SearchViewModel(
-                searchUseCase: DIContainer.shared.searchUseCase,
+                searchUseCase: DIContainer.shared.makeSearchUseCase(),
                 coordinator: self
             )
         )
