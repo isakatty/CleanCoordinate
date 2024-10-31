@@ -19,10 +19,9 @@ protocol Coordinator: AnyObject {
 extension Coordinator {
     func childDidFinish(_ coordinator : Coordinator){
         for (index, child) in childCoordinators.enumerated() {
-            print(index, "이거 왜 안돌아요")
             if child === coordinator {
                 childCoordinators.remove(at: index)
-                print(childCoordinators)
+                print("childDidFinish", childCoordinators)
                 break
             }
         }

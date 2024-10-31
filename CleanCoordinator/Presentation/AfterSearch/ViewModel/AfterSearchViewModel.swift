@@ -11,10 +11,10 @@ import RxSwift
 import RxCocoa
 
 final class AfterSearchViewModel: ViewModelProtocol {
-    var afterCoordinator: Coordinator
+    private var afterCoordinator: AfterSearchCoordinator
     var disposeBag: DisposeBag = DisposeBag()
     
-    init(afterCoordinator: Coordinator) {
+    init(afterCoordinator: AfterSearchCoordinator) {
         self.afterCoordinator = afterCoordinator
     }
     

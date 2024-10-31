@@ -8,7 +8,7 @@
 import UIKit
 
 final class AfterSearchViewController: BaseNavigationViewController {
-    let afterVM: AfterSearchViewModel
+    private let afterVM: AfterSearchViewModel
     
     init(afterVM: AfterSearchViewModel) {
         self.afterVM = afterVM

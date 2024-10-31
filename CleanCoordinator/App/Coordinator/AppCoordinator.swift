@@ -22,9 +22,10 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
+        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController)
+        searchCoordinator.parent = self
         childCoordinators.append(searchCoordinator)
-        print("-Child coordinators: \(childCoordinators)")
+        print("AppCoordinator Child coordinators: \(childCoordinators)")
         searchCoordinator.start()
     }
     

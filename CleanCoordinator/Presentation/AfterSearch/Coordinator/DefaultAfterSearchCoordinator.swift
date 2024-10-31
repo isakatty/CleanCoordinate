@@ -1,5 +1,5 @@
 //
-//  AfterSearchCoordinator.swift
+//  DefaultAfterSearchCoordinator.swift
 //  CleanCoordinator
 //
 //  Created by Jisoo Ham on 10/30/24.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class AfterSearchCoordinator: Coordinator {
+final class DefaultAfterSearchCoordinator: AfterSearchCoordinator {
     var parent: Coordinator?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
     init(
-        parent: Coordinator,
+        parent: Coordinator? = nil,
         navigationController: UINavigationController
     ) {
         self.parent = parent
