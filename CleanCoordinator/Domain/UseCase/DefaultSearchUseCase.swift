@@ -1,5 +1,5 @@
 //
-//  SearchUseCase.swift
+//  DefaultSearchUseCase.swift
 //  CleanCoordinator
 //
 //  Created by Jisoo Ham on 10/27/24.
@@ -9,9 +9,9 @@ import Foundation
 
 import RxSwift
 
-final class SearchUseCase: SearchUseCaseProtocol {
+final class DefaultSearchUseCase: SearchUseCaseInterface {
     @Injected(SearchRepoKey.self)
-    private var repository: SearchRepositoryProtocol
+    private var repository: SearchRepositoryInterface
     
     func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponse, NetworkError>> {
         return repository.searchMovie(txt: txt, page: page)

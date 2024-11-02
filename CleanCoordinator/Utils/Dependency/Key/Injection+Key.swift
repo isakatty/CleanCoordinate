@@ -25,6 +25,11 @@ struct NetworkKey: InjectionKey {
 }
 
 struct SearchRepoKey: InjectionKey {
-    typealias Value = SearchRepositoryProtocol
+    typealias Value = SearchRepositoryInterface
     static var type: InstanceType = .singleton
+}
+
+struct LoginRepoKey: InjectionKey {
+    typealias Value = LoginRepositoryInterface
+    static var type: InstanceType = .automatic
 }

@@ -19,12 +19,12 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     }
     
     deinit {
-        print("== SearchCoordinator Deinit ==")
+        Log.debug("SearchCoordinator Deinit")
     }
     
     func start() {
-        let vc = SearchViewController(searchVM: SearchViewModel(searchUseCase: SearchUseCase(), coordinator: self))
-        navigationController.pushViewController(vc, animated: true)
+        let vc = SearchViewController(searchVM: SearchViewModel(searchUseCase: DefaultSearchUseCase(), coordinator: self))
+        navigationController.setViewControllers([vc], animated: true)
     }
     
     func toAfterSearch() {
@@ -33,7 +33,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
             navigationController: navigationController
         )
         childCoordinators.append(afterCoordinator)
-        print("SearchCoordinator Child coordinators: \(childCoordinators)")
+        Log.debug("SearchCoordinator - chils : \(childCoordinators)")
         afterCoordinator.start()
     }
     

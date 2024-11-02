@@ -18,18 +18,36 @@ final class AppCoordinator: Coordinator {
     }
     
     deinit {
-        print("AppCoordinator는 deinit됐나요 ?")
+        Log.debug("AppCoordinator deinit")
     }
     
     func start() {
-        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController)
-        searchCoordinator.parent = self
-        childCoordinators.append(searchCoordinator)
-        print("AppCoordinator Child coordinators: \(childCoordinators)")
-        searchCoordinator.start()
+        let isLogined = UserDefaults.standard.value(forKey: "login") as? Bool ?? false
+        
+        if isLogined {
+            startSearch()
+        } else {
+            startLogin()
+        }
     }
     
     func finish() {
         childCoordinators.removeLast()
+    }
+    
+    private func startSearch() {
+        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController)
+        searchCoordinator.parent = self
+        childCoordinators.append(searchCoordinator)
+        Log.debug("AppCoordinator - chils : \(childCoordinators)")
+        searchCoordinator.start()
+    }
+    
+    private func startLogin() {
+        let loginCoordinator = DefaultLoginCoordinator(navigationController: navigationController)
+        loginCoordinator.parent = self
+        childCoordinators.append(loginCoordinator)
+        Log.debug("AppCoordinator - chils : \(childCoordinators)")
+        loginCoordinator.start()
     }
 }

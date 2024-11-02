@@ -72,6 +72,7 @@ final class SearchViewController: BaseNavigationViewController {
         
         navigationItem.searchController = searchController
         title = "영화 검색"
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     override func setHierarchy() {

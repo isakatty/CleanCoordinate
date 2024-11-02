@@ -1,5 +1,5 @@
 //
-//  SearchRepository.swift
+//  DefaultSearchRepository.swift
 //  CleanCoordinator
 //
 //  Created by Jisoo Ham on 10/27/24.
@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-final class SearchRepository: SearchRepositoryProtocol {
+final class DefaultSearchRepository: SearchRepositoryInterface {
     @Injected(NetworkKey.self)
     private var network: NetworkType
     
