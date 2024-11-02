@@ -10,11 +10,8 @@ import Foundation
 import RxSwift
 
 final class SearchRepository: SearchRepositoryProtocol {
-    private let network: NetworkType
-    
-    init(network: NetworkType) {
-        self.network = network
-    }
+    @Injected(NetworkKey.self)
+    private var network: NetworkType
     
     func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponse, NetworkError>> {
         return network.callRequest(router: .searchMovie(target: txt, page: page), type: SearchResponseDTO.self)

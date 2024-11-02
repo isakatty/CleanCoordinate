@@ -9,6 +9,6 @@ import Foundation
 
 import RxSwift
 
-protocol SearchRepositoryProtocol {
+protocol SearchRepositoryProtocol: Dependency, AnyObject {
     func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponse, NetworkError>>
 }

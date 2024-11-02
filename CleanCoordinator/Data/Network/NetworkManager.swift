@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-protocol NetworkType {
+protocol NetworkType: Dependency, AnyObject {
     func callRequest<T: Decodable>(
         router: Router,
         type: T.Type

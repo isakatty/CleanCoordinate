@@ -23,12 +23,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     }
     
     func start() {
-        let vc = SearchViewController(
-            searchVM: SearchViewModel(
-                searchUseCase: DIContainer.shared.makeSearchUseCase(),
-                coordinator: self
-            )
-        )
+        let vc = SearchViewController(searchVM: SearchViewModel(searchUseCase: SearchUseCase(), coordinator: self))
         navigationController.pushViewController(vc, animated: true)
     }
     

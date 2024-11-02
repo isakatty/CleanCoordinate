@@ -10,11 +10,8 @@ import Foundation
 import RxSwift
 
 final class SearchUseCase: SearchUseCaseProtocol {
-    private let repository: SearchRepositoryProtocol
-    
-    init(repository: SearchRepositoryProtocol) {
-        self.repository = repository
-    }
+    @Injected(SearchRepoKey.self)
+    private var repository: SearchRepositoryProtocol
     
     func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponse, NetworkError>> {
         return repository.searchMovie(txt: txt, page: page)
