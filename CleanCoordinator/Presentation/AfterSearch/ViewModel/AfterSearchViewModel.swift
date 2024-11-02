@@ -20,7 +20,7 @@ final class AfterSearchViewModel: ViewModelProtocol {
     
     deinit {
         afterCoordinator.finish()
-        print("AfterSearcViewModel deinit")
+        Log.debug("AfterSearchViewModel deinit")
     }
     
     struct Input {
