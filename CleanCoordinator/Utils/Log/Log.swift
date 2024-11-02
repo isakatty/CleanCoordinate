@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Log {
+final class Log {
     enum Level: String {
         case verbose = "🔎 VERBOSE"
         case debug = "✨ DEBUG"
