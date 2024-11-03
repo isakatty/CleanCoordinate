@@ -23,10 +23,8 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         title = "home"
-        
-        navigationController?.navigationBar.backgroundColor = .white
     }
     
 }
