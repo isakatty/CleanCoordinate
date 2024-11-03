@@ -24,7 +24,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     
     func start() {
         let vc = SearchViewController(searchVM: SearchViewModel(searchUseCase: DefaultSearchUseCase(), coordinator: self))
-        navigationController.setViewControllers([vc], animated: true)
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func toAfterSearch() {

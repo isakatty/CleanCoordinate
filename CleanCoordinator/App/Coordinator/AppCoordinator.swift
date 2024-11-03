@@ -25,7 +25,7 @@ final class AppCoordinator: Coordinator {
         let isLogined = UserDefaults.standard.value(forKey: "login") as? Bool ?? false
         
         if isLogined {
-            startSearch()
+            startTab()
         } else {
             startLogin()
         }
@@ -35,12 +35,13 @@ final class AppCoordinator: Coordinator {
         childCoordinators.removeLast()
     }
     
-    private func startSearch() {
-        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController)
-        searchCoordinator.parent = self
-        childCoordinators.append(searchCoordinator)
+    private func startTab() {
+        let tabCoordinator = TabBarCoordinator(navigationController: navigationController)
+        tabCoordinator.parent = self
+        childCoordinators.append(tabCoordinator)
         Log.debug("AppCoordinator - chils : \(childCoordinators)")
-        searchCoordinator.start()
+        tabCoordinator.start()
+        
     }
     
     private func startLogin() {

@@ -34,5 +34,7 @@ class BaseNavigationViewController: BaseViewController {
             target: self,
             action: nil
         )
+        
+        navigationController?.navigationBar.backgroundColor = .magenta
     }
 }

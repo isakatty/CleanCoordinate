@@ -17,6 +17,48 @@ final class TabBarCoordinator: Coordinator {
     }
     
     func start() {
+        setupTabBarController()
+    }
+    
+    private func setupTabBarController() {
+        let tabBarController = TabBarViewController()
+        navigationController.setViewControllers([tabBarController], animated: true)
         
+        let viewControllers = TabKind.allCases.map { tabKind in
+            makeNavigationController(for: tabKind)
+        }
+        
+        tabBarController.viewControllers = viewControllers
+    }
+    
+    private func makeNavigationController(for tabKind: TabKind) -> UINavigationController {
+        let navigationController = UINavigationController()
+        navigationController.tabBarItem = tabKind.tabItem
+        navigationController.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.black
+        ]
+        
+        setupChildCoordinator(for: tabKind, navigationController: navigationController)
+        
+        return navigationController
+    }
+    
+    private func setupChildCoordinator(for tabKind: TabKind, navigationController: UINavigationController) {
+        let coordinator: Coordinator
+        
+        switch tabKind {
+        case .workspace:
+            coordinator = DefaultHomeCoordinator(navigationController: navigationController)
+        case .dm:
+            coordinator = DefaultDmCoordinator(navigationController: navigationController)
+        case .search:
+            coordinator = DefaultSearchCoordinator(navigationController: navigationController)
+        case .setting:
+            coordinator = DefaultSettingCoordinator(navigationController: navigationController)
+        }
+        
+        coordinator.parent = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }
