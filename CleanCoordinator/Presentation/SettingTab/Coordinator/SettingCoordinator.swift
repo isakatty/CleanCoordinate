@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol SettingCoordinator: Coordinator { }
+protocol SettingCoordinator: Coordinator {
+    func moveToLogin()
+}

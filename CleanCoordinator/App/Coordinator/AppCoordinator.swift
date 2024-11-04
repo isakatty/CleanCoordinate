@@ -23,16 +23,12 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let isLogined = UserDefaults.standard.value(forKey: "login") as? Bool ?? false
-        
+        Log.debug("AppCoordinator - \(isLogined)")
         if isLogined {
             startTab()
         } else {
             startLogin()
         }
-    }
-    
-    func finish() {
-        childCoordinators.removeLast()
     }
     
     private func startTab() {

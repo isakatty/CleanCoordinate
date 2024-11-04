@@ -21,3 +21,10 @@ final class DefaultSettingCoordinator: SettingCoordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 }
+
+extension DefaultSettingCoordinator {
+    func moveToLogin() {
+        finish()
+        parent?.parent?.start()
+    }
+}

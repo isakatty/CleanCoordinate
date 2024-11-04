@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         navigationController.navigationBar.backgroundColor = .blue
+        navigationController.isNavigationBarHidden = true
         
         appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator?.start()

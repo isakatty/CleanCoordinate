@@ -18,6 +18,7 @@ protocol Coordinator: AnyObject {
 
 extension Coordinator {
     func finish() {
+        navigationController.popToRootViewController(animated: true)
         parent?.childDidFinish(self)
     }
     
