@@ -12,5 +12,6 @@ extension AppDelegate {
         Container.register(NetworkKey.self, NetworkManager())
         Container.register(SearchRepoKey.self, DefaultSearchRepository())
         Container.register(LoginRepoKey.self, DefaultLoginRepository())
+        Container.register(SearchUseCaseKey.self, DefaultSearchUseCase())
     }
 }

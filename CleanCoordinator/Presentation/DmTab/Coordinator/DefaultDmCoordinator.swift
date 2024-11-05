@@ -16,6 +16,10 @@ final class DefaultDmCoordinator: DmCoordinator {
         self.navigationController = navigationController
     }
     
+    deinit {
+//        Log.debug("DmCoordinator Deinit")
+    }
+    
     func start() {
         let vc = DmViewController(viewModel: DmViewModel(coordinator: self))
         navigationController.pushViewController(vc, animated: true)

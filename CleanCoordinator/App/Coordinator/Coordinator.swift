@@ -18,7 +18,6 @@ protocol Coordinator: AnyObject {
 
 extension Coordinator {
     func finish() {
-        navigationController.popToRootViewController(animated: true)
         parent?.childDidFinish(self)
     }
     
@@ -30,5 +29,12 @@ extension Coordinator {
                 break
             }
         }
+    }
+    func logout() {
+        for child in childCoordinators {
+            child.finish()
+        }
+        
+        finish()
     }
 }

@@ -37,7 +37,6 @@ final class AppCoordinator: Coordinator {
         childCoordinators.append(tabCoordinator)
         Log.debug("AppCoordinator - chils : \(childCoordinators)")
         tabCoordinator.start()
-        
     }
     
     private func startLogin() {

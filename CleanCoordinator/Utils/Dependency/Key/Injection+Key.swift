@@ -33,3 +33,8 @@ struct LoginRepoKey: InjectionKey {
     typealias Value = LoginRepositoryInterface
     static var type: InstanceType = .automatic
 }
+
+struct SearchUseCaseKey: InjectionKey {
+    typealias Value = SearchUseCaseInterface
+    static var type: InstanceType = .automatic
+}

@@ -17,7 +17,7 @@ final class DefaultLoginCoordinator: LoginCoordinator {
     }
     
     deinit {
-        Log.debug("DefaultLoginCoordinator Deinit")
+        Log.debug("DefaultLoginCoordinator Deinit==")
     }
     
     func start() {
@@ -28,10 +28,6 @@ final class DefaultLoginCoordinator: LoginCoordinator {
             )
         )
         navigationController.pushViewController(vc, animated: true)
-    }
-    
-    func finish() {
-        parent?.childDidFinish(self)
     }
     
     func moveToTab() {

@@ -16,6 +16,10 @@ final class DefaultSettingCoordinator: SettingCoordinator {
         self.navigationController = navigationController
     }
     
+    deinit {
+        Log.info("DefaultSettingCoordinator - deinit !!!!")
+    }
+    
     func start() {
         let vc = SettingViewController(viewModel: SettingViewModel(coordinator: self))
         navigationController.pushViewController(vc, animated: true)
@@ -24,7 +28,8 @@ final class DefaultSettingCoordinator: SettingCoordinator {
 
 extension DefaultSettingCoordinator {
     func moveToLogin() {
-        finish()
+        parent?.logout()
+        navigationController.viewControllers.removeAll()
         parent?.parent?.start()
     }
 }

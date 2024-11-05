@@ -9,6 +9,6 @@ import Foundation
 
 import RxSwift
 
-protocol SearchUseCaseInterface: AnyObject {
+protocol SearchUseCaseInterface: Dependency, AnyObject {
     func searchMovie(txt: String, page: Int) -> Single<Result<SearchResponse, NetworkError>>
 }

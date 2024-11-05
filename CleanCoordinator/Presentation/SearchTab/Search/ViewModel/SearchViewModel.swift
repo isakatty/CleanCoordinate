@@ -13,14 +13,13 @@ import RxCocoa
 final class SearchViewModel: ViewModelProtocol {
     var disposeBag: DisposeBag = DisposeBag()
     
+    @Injected(SearchUseCaseKey.self)
     private var searchUseCase: SearchUseCaseInterface
     private let coordinator: SearchCoordinator
     
     init(
-        searchUseCase: SearchUseCaseInterface,
         coordinator: SearchCoordinator
     ) {
-        self.searchUseCase = searchUseCase
         self.coordinator = coordinator
     }
     

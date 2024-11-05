@@ -21,7 +21,7 @@ final class DefaultAfterSearchCoordinator: AfterSearchCoordinator {
     }
     
     deinit {
-        Log.debug("AfterSearchCoordinator Deinit")
+//        Log.debug("AfterSearchCoordinator Deinit")
     }
     
     func start() {

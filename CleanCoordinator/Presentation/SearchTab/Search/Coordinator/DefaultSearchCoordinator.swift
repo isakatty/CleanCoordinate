@@ -23,7 +23,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     }
     
     func start() {
-        let vc = SearchViewController(searchVM: SearchViewModel(searchUseCase: DefaultSearchUseCase(), coordinator: self))
+        let vc = SearchViewController(searchVM: SearchViewModel(coordinator: self))
         navigationController.pushViewController(vc, animated: true)
     }
     
@@ -33,7 +33,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
             navigationController: navigationController
         )
         childCoordinators.append(afterCoordinator)
-        Log.debug("SearchCoordinator - chils : \(childCoordinators)")
+//        Log.debug("SearchCoordinator - chils : \(childCoordinators)")
         afterCoordinator.start()
     }
     

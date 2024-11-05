@@ -43,7 +43,7 @@ final class LoginViewModel: ViewModelProtocol {
     
     private func loginResult() {
         guard let isLogined = UserDefaults.standard.value(forKey: "login") as? Bool else {
-            Log.error("로그인 에러")
+//            Log.error("로그인 에러")
             return
         }
         print(isLogined)

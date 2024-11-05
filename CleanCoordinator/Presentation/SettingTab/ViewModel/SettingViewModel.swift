@@ -16,6 +16,11 @@ final class SettingViewModel: ViewModelProtocol {
     
     init(coordinator: SettingCoordinator) {
         self.coordinator = coordinator
+        Log.info("Setting VM init")
+    }
+    
+    deinit {
+        Log.debug("Deinit되어요?")
     }
     
     struct Input {

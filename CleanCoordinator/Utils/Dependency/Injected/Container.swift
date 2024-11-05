@@ -43,22 +43,22 @@ struct Container {
                     return service
                 }
             }
-            Log.error("fattalError singleton Occur")
-            assert(false, "fattalError singleton Occur")
+//            Log.error("fatalError singleton Occur")
+            assert(false, "fatalError singleton Occur")
         case .newSingleton:
             let service = factories[serviceName]?() as? Dependency
             if let service = service {
                 cache[serviceName] = service
                 return service
             }
-            Log.error("fattalError singleton Occur")
-            assert(false, "fattalError singleton Occur")
+//            Log.error("fatalError singleton Occur")
+            assert(false, "fatalError singleton Occur")
         case .new, .automatic:
             if let dependency = factories[serviceName]?() as? Dependency {
                 return dependency
             }
-            Log.error("fattalError singleton Occur")
-            assert(false, "fattalError singleton Occur")
+//            Log.error("fatalError singleton Occur")
+            assert(false, "fatalError singleton Occur")
         }
         return nil
     }
